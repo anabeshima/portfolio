@@ -23,7 +23,7 @@ def results(request, question_id):
 def vote(request, question_id):
     question = Question.objects.get(pk=question_id)
     try:
-        selected_choice = question.choise_set(pk=request.POST['choice'])
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         return render(request, 'myapp/detail.html', {
             'question': question,
@@ -32,4 +32,4 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        return HttpResponseRedirect(reverse('myapp:results', args=(question.id)))
+        return HttpResponseRedirect(reverse('myapp:results', args=(question.id,)))

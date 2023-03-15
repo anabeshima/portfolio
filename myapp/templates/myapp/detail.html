@@ -1,5 +1,5 @@
 <h1>{{ question.text }}</h1>
-<form action="{% url 'myapp:results' question.id %}" method="post">
+<form action="{% url 'myapp:vote' question.id %}" method="post">
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">

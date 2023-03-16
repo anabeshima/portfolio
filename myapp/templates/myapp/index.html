@@ -1,6 +1,12 @@
-<h1>アンケート</h1>
-<ul>
-{% for question in latest_questions %}
-    <li><a href="{% url 'myapp:detail' question.id %}">{{ question.text }}</a></li>
-{% endfor %}
-</ul>
+{% extends "myapp/base.html" %}
+{% block title %}アンケート{% endblock %}
+{% block header %}アンケート{% endblock %}
+{% block content %}
+    <div class="list-group list-group-flush">
+        {% for question in latest_questions %}
+            <a class="list-group-item list-group-item-action" href="{% url 'myapp:detail' question.id %}">
+                {{ question.text }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

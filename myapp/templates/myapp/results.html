@@ -1,8 +1,12 @@
-<h1>投票結果</h1>
-<p>{{ question.text }}</p>
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.text }} -- {{ choice.votes }}票</li>
-{% endfor %}
-</ul>
-<a href="{% url 'myapp:index' %}">別の質問に投票する</a>
+{% extends "myapp/base.html" %}
+{% block title %}アンケート - 投票結果{% endblock %}
+{% block header %}投票結果{% endblock %}
+{% block content %}
+    <p>{{ question.text }}</p>
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.text }} -- {{ choice.votes }}票</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'myapp:index' %}">別の質問に投票する</a>
+{% endblock %}

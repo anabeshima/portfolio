@@ -1,9 +1,17 @@
-<h1>{{ question.text }}</h1>
-<form action="{% url 'myapp:vote' question.id %}" method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-    <label for="choice{{ forloop.counter }}">{{ choice.text }}</label><br>
-{% endfor %}
-<input type="submit" value="投票する">
-</form>
+{% extends "myapp/base.html" %}
+{% block title %}アンケート - {{ question.text }}{% endblock %}
+{% block header %}{{ question.text }}{% endblock %}
+{% block content %}
+    <form action="{% url 'myapp:vote' question.id %}" method="post">
+        {% csrf_token %}
+        <div class="list-group list-group-flush">
+            {% for choice in question.choice_set.all %}
+                <label class="list-group-item list-group-item-action">
+                    <input class="form-check-input" type="radio" name="choice" value="{{ choice.id }}">
+                    {{ choice.text }}
+                </label>
+            {% endfor %}
+        </div>
+        <input type="submit" value="投票する" class="btn btn-info text-white mt-2">
+    </form>
+{% endblock %}

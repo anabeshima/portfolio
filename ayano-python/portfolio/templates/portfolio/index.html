@@ -1,0 +1,132 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Ayano Nabeshima</title>
+    <style>
+      @font-face {
+        font-family: "はれのそら明朝";
+        src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2') format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        unicode-range: U+2E80-2FFFF;
+      }
+
+      body {
+        font-family: "はれのそら明朝", serif;
+      }
+
+      .introduction {
+        background-image: url("{% static 'image/header.jpg' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .grass {
+        backdrop-filter: blur(5px) brightness(120%);
+      }
+
+      .comment {
+        margin: 0;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#about_me">
+                  <img src="{% static 'image/icon.png' %}" style="width: 2em; height: auto;" alt="">
+                  About me
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#learning">
+                  <img src="{% static 'image/hon.png' %}" style="width: 2em; height: auto;" alt="">
+                  勉強中のもの
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#others">
+                  <img src="{% static 'image/kira.png' %}" style="width: 2em; height: auto;" alt="">
+                  その他
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="introduction mb-4">
+        <div class="p-4">
+          <div class="container p-4 rounded-3 grass">
+            <h1 class="display-6 fw-bold">Ayano's Portfolio Site</h1>
+            <p class="col-md-8 fs-5">Thank you for visiting my website.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="about_me" class="container px-5 py-3">
+        <div class="col d-flex align-items-start mb-5">
+          <div class="flex-shrink-0 me-3">
+            <img src="{% static 'image/icon.png' %}" style="width: 5em; height: auto">
+          </div>
+          <div>
+            <h2>About me</h2>
+            <p class="comment">
+              ポートフォリオサイトへお越しいただきありがとうございます。<br>
+              鍋嶋彩乃と申します。<br>
+              IT企業で働くために日々奮闘中です。<br>
+              システム開発を通して、働きやすい会社を増やすことが目標です。
+            </p>
+          </div>
+        </div>
+        
+        <div id="learning" class="col d-flex align-items-start mb-5">
+          <div class="flex-shrink-0 me-3">
+            <img src="{% static 'image/hon.png' %}" style="width: 5em; height: auto">
+          </div>
+          <div>
+            <h2>勉強中のもの</h2>
+            <p class="comment">
+              Python / Django / HTML ……<br>
+              参考書籍: Python Djamgo3 超入門  掌田津那乃 等……
+            </p>
+          </div>
+        </div>
+
+        <div id="others" class="col d-flex align-items-start mb-5">
+          <div class="flex-shrink-0 me-3">
+            <img src="{% static 'image/kira.png' %}" style="width: 5em; height: auto">
+          </div>
+          <div>
+            <h2>その他</h2>
+            <p class="comment mb-2">
+              勉強している中で制作したものです。<br>
+              よろしければご覧ください。
+            </p>
+            <div class="border border-2 bg-light bg-gradient rounded-3 p-3">
+              <h5>アンケートサイト</h5>
+              <p>Djangoの学習中での成果物です。
+              </p>
+              <a class="btn btn-outline-primary" href="{% url 'myapp:index' %}">≫ アンケートサイトはこちら</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
